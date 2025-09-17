@@ -1,89 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Product List</title>
-  <style>
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin: 24px; }
-    .wrapper { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 16px; }
-    .product { border: 1px solid #e5e7eb; border-radius: 10px; padding: 12px; }
-    .product-inner { display: grid; gap: 8px; }
-    .product-title a { font-weight: 600; text-decoration: none; color: #111827; }
-    .product-info span { display: block; color: #374151; }
-    .badge, .meta { background: #f3f4f6; display: inline-block; padding: 2px 6px; border-radius: 999px; margin-right: 6px; font-size: 12px; }
-    .toolbar { display:flex; gap:8px; align-items:center; }
-    .toolbar a { font-size: 12px; color: #2563eb; text-decoration: none; }
-  </style>
+    <meta charset="UTF-8">
+    <title>E-Commerce Product Catalog</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .product { border: 1px solid #ccc; margin: 20px 0; padding: 15px; }
+        .product-title { font-size: 18px; font-weight: bold; margin-bottom: 10px; }
+        .product-info { margin-bottom: 10px; }
+        .product-variants { margin-left: 20px; padding: 10px; background-color: #f9f9f9; }
+        .variant { margin: 5px 0; padding: 5px; border-left: 3px solid #007bff; }
+        .promotion-banner { background-color: #ff6b6b; color: white; padding: 5px; margin: 5px 0; }
+    </style>
 </head>
 <body>
-  <h1>Product List</h1>
-
-  <div class="wrapper">
-
+    <h1>Electronics Store - Product Catalog</h1>
+    
     <div class="product" id="product-1">
-      <div class="product-inner">
         <div class="product-title">
-          <a href="http://example.com/product1">Mechanical Keyboard</a>
+            <a href="http://example.com/laptop-dell-xps">Dell XPS 13 Laptop</a>
         </div>
         <div class="product-info">
-          <span>Price: $89.99</span>
-          <span>Quantity: 120</span>
-          <span>Description: Hot-swap switches, RGB, compact layout.</span>
+            <span>Price: $1,299.99</span>
+            <span>Stock: 15</span>
+            <span>Description: High-performance ultrabook with Intel Core i7 processor.</span>
         </div>
-      </div>
+        <!-- Realistic: Product variants with their own pricing -->
+        <div class="product-variants">
+            <h4>Available Configurations:</h4>
+            <div class="variant">
+                <a href="http://example.com/laptop-dell-xps-8gb">8GB RAM Version</a>
+                <span>Price: $1,199.99</span>
+                <span>Stock: 8</span>
+                <span>Description: Standard configuration with 8GB RAM and 256GB SSD.</span>
+            </div>
+            <div class="variant">
+                <a href="http://example.com/laptop-dell-xps-16gb">16GB RAM Version</a>
+                <span>Price: $1,399.99</span>
+                <span>Stock: 5</span>
+                <span>Description: Enhanced configuration with 16GB RAM and 512GB SSD.</span>
+            </div>
+        </div>
     </div>
 
     <div class="product" id="product-2">
-      <div class="product-inner">
-        <div class="related">
-          <div class="product-title">
-            <a href="http://example.com/related-2a">Ergonomic Mouse (Bundle)</a>
-          </div>
-          <a href="http://example.com/related-2">Explore bundle</a>
-        </div>
         <div class="product-title">
-          <a href="http://example.com/product2">Ergonomic Mouse</a>
+            <a href="http://example.com/smartphone-iphone">iPhone 15 Pro</a>
         </div>
         <div class="product-info">
-          <span>Price: $49.99</span>
-          <span>Quantity: 80</span>
-          <span>Description: Vertical design to reduce wrist strain.</span>
+            <span>Price: $999.99</span>
+            <span>Stock: 25</span>
+            <span>Description: Latest iPhone with A17 Pro chip and titanium design.</span>
         </div>
-      </div>
+        <div class="promotion-banner">
+            <span>Special Offer: Trade-in your old phone!</span>
+            <span>Discount: Up to $200 off</span>
+            <span>Terms: Valid until end of month with qualifying trade-in.</span>
+        </div>
+        <div class="product-variants">
+            <h4>Storage Options:</h4>
+            <div class="variant">
+                <a href="http://example.com/iphone-128gb">128GB Model</a>
+                <span>Price: $999.99</span>
+                <span>Stock: 12</span>
+                <span>Description: Base model with 128GB storage.</span>
+            </div>
+            <div class="variant">
+                <a href="http://example.com/iphone-256gb">256GB Model</a>
+                <span>Price: $1,099.99</span>
+                <span>Stock: 8</span>
+                <span>Description: Mid-tier model with 256GB storage.</span>
+            </div>
+        </div>
     </div>
 
     <div class="product" id="product-3">
-      <div class="product-inner">
-        <div class="toolbar">
-          <a href="http://example.com/product3#details">View details</a>
-          <a href="http://example.com/share/product3">Share</a>
-        </div>
         <div class="product-title">
-          <a href="http://example.com/product3">USB-C Hub 7-in-1</a>
+            <a href="http://example.com/gaming-monitor">ASUS ROG Gaming Monitor 27"</a>
         </div>
         <div class="product-info">
-          <span class="badge">Limited</span>
-          <span>Price: $39.50</span>
-          <span>Quantity: 200</span>
-          <span>Description: HDMI, PD, SD/TF, and more.</span>
+            <span>Price: $449.99</span>
+            <span>Stock: 30</span>
+            <span>Description: 144Hz refresh rate gaming monitor with G-SYNC compatibility.</span>
         </div>
-      </div>
+        <div class="product-variants">
+            <h4>Bundle Options:</h4>
+            <div class="variant">
+                <a href="http://example.com/monitor-bundle-basic">Monitor + Basic Stand</a>
+                <span>Price: $479.99</span>
+                <span>Stock: 20</span>
+                <span>Description: Monitor with adjustable stand included.</span>
+            </div>
+            <div class="variant">
+                <a href="http://example.com/monitor-bundle-premium">Monitor + Premium Arm</a>
+                <span>Price: $549.99</span>
+                <span>Stock: 15</span>
+                <span>Description: Monitor with premium articulating arm mount.</span>
+            </div>
+        </div>
     </div>
 
     <div class="product" id="product-4">
-      <div class="product-inner">
         <div class="product-title">
-          <a href="http://example.com/product4">1080p Webcam</a>
+            <a href="http://example.com/wireless-headphones">Sony WH-1000XM5 Headphones</a>
         </div>
         <div class="product-info">
-          <span class="meta">In stock</span>
-          <span>Price: $59.00</span>
-          <span>Quantity: 65</span>
-          <span>Description: Auto light correction and privacy shutter.</span>
+            <span>Price: $329.99</span>
+            <span>Stock: 40</span>
+            <span>Description: Premium noise-canceling wireless headphones with 30-hour battery.</span>
         </div>
-      </div>
+        <div class="promotion-banner">
+            <span>Limited Time: Free shipping!</span>
+            <span>Savings: $15 shipping fee waived</span>
+            <span>Eligibility: Orders over $300 qualify for free expedited shipping.</span>
+        </div>
     </div>
-
-  </div>
 </body>
 </html>
