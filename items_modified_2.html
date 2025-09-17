@@ -2,134 +2,144 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Product List – XPath Teaching (Child vs Descendant + .// Pitfalls)</title>
+  <title>Product List</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin: 24px; }
+    .wrapper { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 16px; }
+    .product { border: 1px solid #e5e7eb; border-radius: 10px; padding: 12px; }
+    .product-inner { display: grid; gap: 8px; }
+    .product-title a { font-weight: 600; text-decoration: none; color: #111827; }
+    .product-info span { display: block; color: #374151; }
+    .badge, .meta { background: #f3f4f6; display: inline-block; padding: 2px 6px; border-radius: 999px; margin-right: 6px; font-size: 12px; }
+    .toolbar { display:flex; gap:8px; align-items:center; }
+    .toolbar a { font-size: 12px; color: #2563eb; text-decoration: none; }
+    .thumb a { display:inline-block; }
+    .breadcrumb a { color:#2563eb; text-decoration:none; margin-right:6px; }
+  </style>
 </head>
 <body>
   <h1>Product List</h1>
 
-  <!-- =========================
-       Section A–F: Your product list
-       - Outer wrapper around all products
-       - Inner wrapper inside each product (Option A)
-       - Shows difference between child-only vs .// descendant
-       ========================= -->
+  <nav class="breadcrumb">
+    <a href="/">Home</a> /
+    <a href="/shop">Shop</a> /
+    <a href="/shop/peripherals">Peripherals</a>
+  </nav>
+
   <div class="wrapper">
 
     <div class="product" id="product-1">
-      <!-- 👇 Inner wrapper -->
       <div class="product-inner">
+        <div class="toolbar">
+          <a href="http://example.com/product1#details">View details</a>
+          <a href="http://example.com/share/product1">Share</a>
+        </div>
         <div class="product-title">
-          <a href="http://example.com/product1">Product 1</a>
+          <a href="http://example.com/product1">Mechanical Keyboard</a>
         </div>
         <div class="product-info">
-          <span>Price: $29.99</span>
-          <span>Quantity: 100</span>
-          <span>Description: This is a short description of product 1.</span>
+          <span>Price: $89.99</span>
+          <span>Quantity: 120</span>
+          <span>Description: Hot-swap switches, RGB, compact layout.</span>
         </div>
       </div>
     </div>
 
     <div class="product" id="product-2">
       <div class="product-inner">
+        <div class="related">
+          <div class="product-title">
+            <a href="http://example.com/related-2a">Ergonomic Mouse (Bundle)</a>
+          </div>
+          <a href="http://example.com/related-landing-2">Explore bundle</a>
+        </div>
         <div class="product-title">
-          <a href="http://example.com/product2">Product 2</a>
+          <a href="http://example.com/product2">Ergonomic Mouse</a>
         </div>
         <div class="product-info">
           <span>Price: $49.99</span>
-          <span>Quantity: 50</span>
-          <span>Description: This is a short description of product 2.</span>
+          <span>Quantity: 80</span>
+          <span>Description: Vertical design to reduce wrist strain.</span>
         </div>
       </div>
     </div>
 
     <div class="product" id="product-3">
       <div class="product-inner">
+        <div class="thumb">
+          <a href="http://example.com/gallery/product3">
+            <img src="https://via.placeholder.com/120x80" alt="USB-C Hub">
+          </a>
+        </div>
         <div class="product-title">
-          <a href="http://example.com/product3">Product 3</a>
+          <span class="badge">New</span>
+          <a href="http://example.com/product3">USB-C Hub 7-in-1</a>
         </div>
         <div class="product-info">
-          <span>Price: $19.99</span>
+          <span class="badge">Limited</span>
+          <span>Price: $39.50</span>
           <span>Quantity: 200</span>
-          <span>Description: This is a short description of product 3.</span>
+          <span>Description: HDMI, PD, SD/TF, and more.</span>
         </div>
       </div>
     </div>
 
     <div class="product" id="product-4">
       <div class="product-inner">
+        <a href="http://example.com/promo">Summer Promo</a>
         <div class="product-title">
-          <a href="http://example.com/product4">Product 4</a>
+          <a href="http://example.com/product4">1080p Webcam</a>
         </div>
         <div class="product-info">
-          <span>Price: $99.99</span>
-          <span>Quantity: 20</span>
-          <span>Description: This is a short description of product 4.</span>
+          <span class="meta">Ships free</span>
+          <span class="meta">In stock</span>
+          <span>Price: $59.00</span>
+          <span>Quantity: 65</span>
+          <span>Description: Auto light correction and privacy shutter.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="product" id="product-5">
+      <div class="product-inner">
+        <div class="related">
+          <a href="http://example.com/related-list-5">See similar stands</a>
+          <div class="product-title">
+            <a href="http://example.com/related-5a">Aluminum Stand (Slim)</a>
+          </div>
+        </div>
+        <div class="product-title">
+          <a href="http://example.com/product5">Laptop Stand</a>
+        </div>
+        <div class="product-info">
+          <span class="badge">Editor’s pick</span>
+          <span>Price: $34.99</span>
+          <span>Quantity: 140</span>
+          <span>Description: Adjustable height and angle.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="product" id="product-6">
+      <div class="product-inner">
+        <div class="toolbar">
+          <a href="http://example.com/help/shipping">Shipping info</a>
+        </div>
+        <div class="product-title">
+          <a href="http://example.com/product6">Wireless Charger</a>
+        </div>
+        <div class="product-info">
+          <span class="meta">Bestseller</span>
+          <span class="meta">Qi-certified</span>
+          <span>Price: $24.00</span>
+          <span>Quantity: 300</span>
+          <span>Description: Fast charge with USB-C cable.</span>
         </div>
       </div>
     </div>
 
   </div>
-
-  <hr>
-
-  <!-- =========================
-       Section G: When .// can misfire
-       Goal: Show that a scoped descendant search can still pick
-       the "wrong" descendant if multiple similar descendants exist.
-       Use child-only axis to target the main product title.
-       ========================= -->
-  <h2>Section G — When <code>.//</code> can over-select</h2>
-
-  <div class="product" id="product-5">
-    <div class="product-inner">
-      <!-- Main (intended) title -->
-      <div class="product-title">
-        <a href="http://example.com/product5">Main Product 5</a>
-      </div>
-
-      <!-- Nested area that also contains a similarly named title -->
-      <div class="related">
-        <h3>Related Items</h3>
-
-        <div class="related-item">
-          <div class="product-title">
-            <a href="http://example.com/related-5a">Related 5A</a>
-          </div>
-        </div>
-
-        <div class="related-item">
-          <div class="product-title">
-            <a href="http://example.com/related-5b">Related 5B</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-info">
-        <span>Price: $59.99</span>
-        <span>Quantity: 15</span>
-        <span>Description: Main product 5 description.</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Teaching notes (as HTML comments):
-    In Selenium:
-
-    # This MAY return the first matching descendant product-title <a>,
-    # which could be a related item instead of the main title:
-    row = driver.find_element(By.ID, "product-5")
-    row.find_element(By.XPATH, ".//div[@class='product-title']/a")
-
-    # This targets ONLY the direct child product title of the product block:
-    row.find_element(By.XPATH, "div[@class='product-inner']/div[@class='product-title']/a")
-
-    # Alternative robust options:
-    #  - Disambiguate by excluding related subtree:
-    row.find_element(By.XPATH, ".//div[@class='product-title'][not(ancestor::div[@class='related'])]/a")
-
-    #  - Or anchor on a stable 'main' container and search beneath it:
-    row.find_element(By.XPATH, ".//div[@class='product-inner']/div[@class='product-title']/a")
-  -->
-
 </body>
 </html>
+
+
