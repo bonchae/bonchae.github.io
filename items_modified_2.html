@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product List – XPath Teaching (Child vs Descendant + .// Pitfalls)</title>
+</head>
+<body>
+  <h1>Product List</h1>
+
+  <!-- =========================
+       Section A–F: Your product list
+       - Outer wrapper around all products
+       - Inner wrapper inside each product (Option A)
+       - Shows difference between child-only vs .// descendant
+       ========================= -->
+  <div class="wrapper">
+
+    <div class="product" id="product-1">
+      <!-- 👇 Inner wrapper -->
+      <div class="product-inner">
+        <div class="product-title">
+          <a href="http://example.com/product1">Product 1</a>
+        </div>
+        <div class="product-info">
+          <span>Price: $29.99</span>
+          <span>Quantity: 100</span>
+          <span>Description: This is a short description of product 1.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="product" id="product-2">
+      <div class="product-inner">
+        <div class="product-title">
+          <a href="http://example.com/product2">Product 2</a>
+        </div>
+        <div class="product-info">
+          <span>Price: $49.99</span>
+          <span>Quantity: 50</span>
+          <span>Description: This is a short description of product 2.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="product" id="product-3">
+      <div class="product-inner">
+        <div class="product-title">
+          <a href="http://example.com/product3">Product 3</a>
+        </div>
+        <div class="product-info">
+          <span>Price: $19.99</span>
+          <span>Quantity: 200</span>
+          <span>Description: This is a short description of product 3.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="product" id="product-4">
+      <div class="product-inner">
+        <div class="product-title">
+          <a href="http://example.com/product4">Product 4</a>
+        </div>
+        <div class="product-info">
+          <span>Price: $99.99</span>
+          <span>Quantity: 20</span>
+          <span>Description: This is a short description of product 4.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr>
+
+  <!-- =========================
+       Section G: When .// can misfire
+       Goal: Show that a scoped descendant search can still pick
+       the "wrong" descendant if multiple similar descendants exist.
+       Use child-only axis to target the main product title.
+       ========================= -->
+  <h2>Section G — When <code>.//</code> can over-select</h2>
+
+  <div class="product" id="product-5">
+    <div class="product-inner">
+      <!-- Main (intended) title -->
+      <div class="product-title">
+        <a href="http://example.com/product5">Main Product 5</a>
+      </div>
+
+      <!-- Nested area that also contains a similarly named title -->
+      <div class="related">
+        <h3>Related Items</h3>
+
+        <div class="related-item">
+          <div class="product-title">
+            <a href="http://example.com/related-5a">Related 5A</a>
+          </div>
+        </div>
+
+        <div class="related-item">
+          <div class="product-title">
+            <a href="http://example.com/related-5b">Related 5B</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-info">
+        <span>Price: $59.99</span>
+        <span>Quantity: 15</span>
+        <span>Description: Main product 5 description.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Teaching notes (as HTML comments):
+    In Selenium:
+
+    # This MAY return the first matching descendant product-title <a>,
+    # which could be a related item instead of the main title:
+    row = driver.find_element(By.ID, "product-5")
+    row.find_element(By.XPATH, ".//div[@class='product-title']/a")
+
+    # This targets ONLY the direct child product title of the product block:
+    row.find_element(By.XPATH, "div[@class='product-inner']/div[@class='product-title']/a")
+
+    # Alternative robust options:
+    #  - Disambiguate by excluding related subtree:
+    row.find_element(By.XPATH, ".//div[@class='product-title'][not(ancestor::div[@class='related'])]/a")
+
+    #  - Or anchor on a stable 'main' container and search beneath it:
+    row.find_element(By.XPATH, ".//div[@class='product-inner']/div[@class='product-title']/a")
+  -->
+
+</body>
+</html>
