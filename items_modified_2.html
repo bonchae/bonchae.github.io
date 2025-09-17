@@ -13,17 +13,10 @@
     .badge, .meta { background: #f3f4f6; display: inline-block; padding: 2px 6px; border-radius: 999px; margin-right: 6px; font-size: 12px; }
     .toolbar { display:flex; gap:8px; align-items:center; }
     .toolbar a { font-size: 12px; color: #2563eb; text-decoration: none; }
-    .breadcrumb a { color:#2563eb; text-decoration:none; margin-right:6px; }
   </style>
 </head>
 <body>
   <h1>Product List</h1>
-
-  <nav class="breadcrumb">
-    <a href="/">Home</a> /
-    <a href="/shop">Shop</a> /
-    <a href="/shop/peripherals">Peripherals</a>
-  </nav>
 
   <div class="wrapper">
 
@@ -42,6 +35,12 @@
 
     <div class="product" id="product-2">
       <div class="product-inner">
+        <div class="related">
+          <div class="product-title">
+            <a href="http://example.com/related-2a">Ergonomic Mouse (Bundle)</a>
+          </div>
+          <a href="http://example.com/related-2">Explore bundle</a>
+        </div>
         <div class="product-title">
           <a href="http://example.com/product2">Ergonomic Mouse</a>
         </div>
@@ -55,10 +54,15 @@
 
     <div class="product" id="product-3">
       <div class="product-inner">
+        <div class="toolbar">
+          <a href="http://example.com/product3#details">View details</a>
+          <a href="http://example.com/share/product3">Share</a>
+        </div>
         <div class="product-title">
           <a href="http://example.com/product3">USB-C Hub 7-in-1</a>
         </div>
         <div class="product-info">
+          <span class="badge">Limited</span>
           <span>Price: $39.50</span>
           <span>Quantity: 200</span>
           <span>Description: HDMI, PD, SD/TF, and more.</span>
@@ -72,46 +76,10 @@
           <a href="http://example.com/product4">1080p Webcam</a>
         </div>
         <div class="product-info">
+          <span class="meta">In stock</span>
           <span>Price: $59.00</span>
           <span>Quantity: 65</span>
           <span>Description: Auto light correction and privacy shutter.</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="product" id="product-5">
-      <div class="product-inner">
-        <div class="related">
-          <div class="product-title">
-            <a href="http://example.com/related-5a">Aluminum Stand (Slim)</a>
-          </div>
-          <a href="http://example.com/related-list-5">See similar stands</a>
-        </div>
-        <div class="product-title">
-          <a href="http://example.com/product5">Laptop Stand</a>
-        </div>
-        <div class="product-info">
-          <span>Price: $34.99</span>
-          <span>Quantity: 140</span>
-          <span>Description: Adjustable height and angle.</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="product" id="product-6">
-      <div class="product-inner">
-        <div class="toolbar">
-          <a href="http://example.com/help/shipping">Shipping info</a>
-        </div>
-        <div class="product-title">
-          <a href="http://example.com/product6">Wireless Charger</a>
-        </div>
-        <div class="product-info">
-          <span class="meta">Bestseller</span>
-          <span class="meta">Qi-certified</span>
-          <span>Price: $24.00</span>
-          <span>Quantity: 300</span>
-          <span>Description: Fast charge with USB-C cable.</span>
         </div>
       </div>
     </div>
